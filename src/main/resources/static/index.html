@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Application</title>
+    <script>
+        // Función para realizar una solicitud asíncrona (AJAX)
+        function fetchData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://your-secure-api-endpoint.com/api/data", true); // Reemplaza con tu URL de API
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById("response").innerHTML = JSON.stringify(response, null, 2);
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Secure Application</h1>
+
+    <p>Click the button below to fetch secure data from the server.</p>
+    <button onclick="fetchData()">Fetch Data</button>
+
+    <h2>Response:</h2>
+    <pre id="response"></pre>
+
+    <footer>
+        <p>Powered by Secure Application</p>
+    </footer>
+</body>
+</html>
